@@ -1,0 +1,12 @@
+---
+- name: List Volumes on Windows Servers
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Run PowerShell command to list volumes
+      win_shell: Get-Volume | Select-Object -Property DriveLetter,FileSystemLabel,DriveType,FileSystem,SizeRemaining,Size,DriveType
+      register: volume_output
+
+    - name: Display volume information
+      debug:
+        var: volume_output.stdout_lines
