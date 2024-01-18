@@ -1,6 +1,6 @@
 ---
 - name: Verificar Consumo de Mem      ria em MB no Windows
-  hosts: windows
+  hosts: all
   gather_facts: yes
   tasks:
     - name: Obter informa            es sobre o consumo de mem      ria
