@@ -1,7 +1,7 @@
 ---
-- name: Playbook Ping
+- name: Ping Windows Hosts
   hosts: all
-  gather_facts: false
+  gather_facts: false   # Disable fact gathering for this example
   tasks:
-    - name: Realizar ping nos hosts
-      ping:
+    - name: Perform ping
+      win_ping:
