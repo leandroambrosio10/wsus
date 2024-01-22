@@ -1,0 +1,14 @@
+---
+- name: Verificar Hotfixes de Seguranca Pendentes (Windows)
+  hosts: windows
+  gather_facts: true
+  tasks:
+    - name: Verificar hotfixes de seguranca pendentes
+      win_updates:
+        category_names:
+          - SecurityUpdates
+      register: updates
+
+    - name: Exibir hotfixes de seguranca pendentes
+      debug:
+        var: updates
