@@ -1,6 +1,6 @@
 ---
 - name: Verificar Hotfixes de Seguranca Pendentes (Windows)
-  hosts: windows
+  hosts: all
   gather_facts: true
   tasks:
     - name: Verificar hotfixes de seguranca pendentes
