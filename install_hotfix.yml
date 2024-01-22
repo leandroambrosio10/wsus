@@ -1,6 +1,6 @@
 ---
 - name: Instalar Hotfix e Reiniciar
-  hosts: windows
+  hosts: all
   gather_facts: no  # Desativar a coleta de fatos para melhorar o desempenho
 
   tasks:
