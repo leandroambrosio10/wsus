@@ -1,0 +1,21 @@
+---
+- name: Instalar Hotfix e Reiniciar
+  hosts: windows
+  gather_facts: no  # Desativar a coleta de fatos para melhorar o desempenho
+
+  tasks:
+    - name: Instalar hotfix
+      win_updates:
+        category_names:
+          - SecurityUpdates
+          - CriticalUpdates
+        state: installed
+      register: hotfix_result
+
+    - name: Verificar se o hotfix foi instalado
+      debug:
+        var: hotfix_result
+
+    - name: Reiniciar o servidor se o hotfix foi instalado
+      win_reboot:
+      when: hotfix_result.reboot_required | bool
