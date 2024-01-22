@@ -1,0 +1,15 @@
+---
+- hosts: windows
+  gather_facts: no
+  strategy: free
+
+  tasks:
+    - name: Display Update ok
+      debug:
+        msg: "SUCESS! No hotfix AND no reboot pending"
+      when: (kbpending == false) and (lastreport_old == false)
+
+    - name: Display update not ok
+      debug:
+        msg: "FAILED! Hotfix not installed"
+      when: kbpending == true
