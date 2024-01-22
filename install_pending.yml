@@ -1,0 +1,12 @@
+---
+- hosts: windows
+  gather_facts: no
+  strategy: free
+
+  tasks:
+    - name: Install hotfix when pending
+      win_updates:
+        reboot: yes
+        reboot_timeout: 3600
+        state: installed
+      when: kbpending == true
